@@ -1,4 +1,4 @@
-package org.corbin.poi.exception.Excel;
+package org.corbin.simple.utils.excel.exception.Excel;
 
 public class FormatNotFoundException extends Exception {
 

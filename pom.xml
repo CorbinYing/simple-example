@@ -14,13 +14,15 @@
     <name>simple-example</name>
     <description>功能示例</description>
     <packaging>pom</packaging>
-    <version>1.0.0</version>
+    <version>0.0.1-SNAPSHOT</version>
 
     <modules>
         <module>poi</module>
+        <module>simple-utils</module>
     </modules>
 
     <properties>
+        <project.version>0.0.1-SNAPSHOT</project.version>
         <poi.version>4.1.2</poi.version>
         <java.version>1.8</java.version>
         <junit.version>4.13</junit.version>
@@ -32,10 +34,6 @@
     </properties>
 
     <dependencies>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter</artifactId>
-        </dependency>
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
@@ -52,17 +50,6 @@
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-lang3</artifactId>
             <version>${commons-lang3.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-test</artifactId>
-            <scope>test</scope>
-            <exclusions>
-                <exclusion>
-                    <groupId>org.junit.vintage</groupId>
-                    <artifactId>junit-vintage-engine</artifactId>
-                </exclusion>
-            </exclusions>
         </dependency>
     </dependencies>
 
@@ -84,7 +71,6 @@
                 <artifactId>spring-boot-starter-undertow</artifactId>
                 <version>${spring.boot.version}</version>
             </dependency>
-
 
             <!-- POI-->
             <dependency>
@@ -108,7 +94,25 @@
                 <artifactId>fastjson</artifactId>
                 <version>${fastjson.version}</version>
             </dependency>
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter</artifactId>
+                <version>${spring.boot.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-test</artifactId>
+                <version>${spring.boot.version}</version>
+                <scope>test</scope>
+                <exclusions>
+                    <exclusion>
+                        <groupId>org.junit.vintage</groupId>
+                        <artifactId>junit-vintage-engine</artifactId>
+                    </exclusion>
+                </exclusions>
+            </dependency>
         </dependencies>
+
     </dependencyManagement>
 
     <build>

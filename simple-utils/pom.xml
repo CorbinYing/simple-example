@@ -6,26 +6,17 @@
         <groupId>org.corbin</groupId>
         <artifactId>simple-example</artifactId>
         <version>0.0.1-SNAPSHOT</version>
-        <relativePath/>
     </parent>
 
-    <artifactId>poi</artifactId>
-    <name>poi</name>
-    <description>POI功能</description>
+    <artifactId>simple-utils</artifactId>
+    <name>simple-utils</name>
+    <description>通用工具集</description>
+
+    <properties>
+        <java.version>1.8</java.version>
+    </properties>
 
     <dependencies>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-web</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-undertow</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-test</artifactId>
-        </dependency>
         <!-- poi操作excel-->
         <dependency>
             <groupId>org.apache.poi</groupId>
@@ -42,14 +33,16 @@
             <artifactId>fastjson</artifactId>
             <scope>provided</scope>
         </dependency>
-
-
         <dependency>
-            <groupId>org.corbin</groupId>
-            <artifactId>simple-utils</artifactId>
-            <version>${project.version}</version>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-core</artifactId>
+            <scope>provided</scope>
         </dependency>
-
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-web</artifactId>
+            <scope>provided</scope>
+        </dependency>
     </dependencies>
 
     <build>
