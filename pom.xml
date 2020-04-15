@@ -24,6 +24,7 @@
     <properties>
         <project.version>0.0.1-SNAPSHOT</project.version>
         <poi.version>4.1.2</poi.version>
+        <csv.version>1.8</csv.version>
         <java.version>1.8</java.version>
         <junit.version>4.13</junit.version>
         <guava.version>28.2-jre</guava.version>
@@ -82,6 +83,12 @@
                 <groupId>org.apache.poi</groupId>
                 <artifactId>poi-ooxml</artifactId>
                 <version>${poi.version}</version>
+            </dependency>
+            <!--CSV-->
+            <dependency>
+                <groupId>org.apache.commons</groupId>
+                <artifactId>commons-csv</artifactId>
+                <version>${csv.version}</version>
             </dependency>
             <dependency>
                 <groupId>junit</groupId>

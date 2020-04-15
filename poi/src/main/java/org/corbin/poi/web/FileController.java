@@ -2,7 +2,11 @@ package org.corbin.poi.web;
 
 import com.alibaba.fastjson.JSON;
 import com.google.common.collect.Lists;
+import org.apache.commons.csv.CSVFormat;
+import org.apache.commons.lang3.time.DateFormatUtils;
+import org.apache.commons.lang3.time.DateUtils;
 import org.apache.poi.ss.usermodel.Workbook;
+import org.corbin.simple.utils.csv.CsvUtil;
 import org.corbin.simple.utils.excel.exception.Excel.FormatNotFoundException;
 import org.corbin.simple.utils.excel.exception.FileFormatException;
 import org.corbin.simple.utils.excel.ExcelUtil;
@@ -16,8 +20,10 @@ import org.springframework.web.multipart.MultipartFile;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.OutputStream;
+import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
@@ -54,6 +60,20 @@ public class FileController {
 
 
         outputStream.flush();
+    }
+
+    @RequestMapping("/down-csv")
+    public void down(HttpServletResponse response) throws IOException {
+        response.addHeader("Content-Disposition", "attachment;filename=" + URLEncoder.encode("测试下载文件.csv", StandardCharsets.UTF_8.name()));
+
+        Object[] attr = new Object[]{"姓名", "年龄", "学费", "入学日期"};
+        Object[] stuent1 = new Object[]{"张三", 22, 1000.3, new Date()};
+        Object[] stuent2 = new Object[]{"张四", 23, 1340.3, new Date()};
+        List<Object[]> dataList = Lists.newArrayList(attr, stuent1, stuent2);
+        OutputStream outputStream = response.getOutputStream();
+        CsvUtil.writeData(dataList, CSVFormat.Predefined.Excel, outputStream);
+        outputStream.flush();
+
     }
 
 }
