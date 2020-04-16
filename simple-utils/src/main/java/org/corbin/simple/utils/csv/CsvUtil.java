@@ -2,25 +2,28 @@ package org.corbin.simple.utils.csv;
 
 import org.apache.commons.csv.CSVFormat;
 import org.apache.commons.csv.CSVPrinter;
+import org.apache.commons.lang3.time.FastDateFormat;
 
 import java.io.BufferedWriter;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.io.OutputStreamWriter;
 import java.nio.charset.StandardCharsets;
+import java.util.Date;
 import java.util.List;
 import java.util.Objects;
 
 public final class CsvUtil {
 
+
     /**
-     * 写入CSV文件
+     * 写入csv文件流
      *
      * @param contentArrList
      * @param predefined
      * @param outputStream
      */
-    public static void writeData(List<Object[]> contentArrList, CSVFormat.Predefined predefined, OutputStream outputStream) {
+    public static void writeCsv(List<Object[]> contentArrList, CSVFormat.Predefined predefined, OutputStream outputStream) {
         Objects.requireNonNull(contentArrList);
         CSVFormat csvFormat = CSVFormat.valueOf(predefined.name());
         CSVPrinter csvPrinter = null;
@@ -32,9 +35,10 @@ public final class CsvUtil {
 
             bufferedWriter = new BufferedWriter(new OutputStreamWriter(outputStream, StandardCharsets.UTF_8));
             csvPrinter = new CSVPrinter(bufferedWriter, csvFormat);
+
+
             for (Object[] rowData : contentArrList) {
-                csvPrinter.printRecord(rowData);
-                csvPrinter.flush();
+                writeRowData(rowData, csvPrinter);
             }
         } catch (IOException e) {
             e.printStackTrace();
@@ -47,5 +51,24 @@ public final class CsvUtil {
                 e.printStackTrace();
             }
         }
+    }
+
+    /**
+     * 写入CSV文件行
+     *
+     * @param contentArr
+     * @param csvPrinter
+     */
+    private static void writeRowData(Object[] contentArr, CSVPrinter csvPrinter) throws IOException {
+        assert contentArr != null;
+        assert csvPrinter != null;
+
+        for (int i = 0; i < contentArr.length; i++) {
+            if (contentArr[i] instanceof Date) {
+                contentArr[i] = FastDateFormat.getInstance("yyyy/MM/dd HH:mm:ss").format(contentArr[i]);
+            }
+        }
+        csvPrinter.printRecord(contentArr);
+        csvPrinter.flush();
     }
 }
