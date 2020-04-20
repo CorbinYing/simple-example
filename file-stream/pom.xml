@@ -6,17 +6,26 @@
         <groupId>org.corbin</groupId>
         <artifactId>simple-example</artifactId>
         <version>0.0.1-SNAPSHOT</version>
+        <relativePath/>
     </parent>
 
-    <artifactId>simple-utils</artifactId>
-    <name>simple-utils</name>
-    <description>通用工具集</description>
-
-    <properties>
-        <java.version>1.8</java.version>
-    </properties>
+    <artifactId>file-stream</artifactId>
+    <name>file-stream</name>
+    <description>POI与CSV文件操作</description>
 
     <dependencies>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-undertow</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+        </dependency>
         <!-- poi操作excel-->
         <dependency>
             <groupId>org.apache.poi</groupId>
@@ -34,26 +43,28 @@
             <artifactId>commons-csv</artifactId>
             <scope>provided</scope>
         </dependency>
-
         <dependency>
             <groupId>com.alibaba</groupId>
             <artifactId>fastjson</artifactId>
             <scope>provided</scope>
         </dependency>
+
+
         <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-core</artifactId>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-web</artifactId>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.dom4j</groupId>
-            <artifactId>dom4j</artifactId>
+            <groupId>org.corbin</groupId>
+            <artifactId>simple-utils</artifactId>
+            <version>${project.version}</version>
         </dependency>
 
     </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+        </plugins>
+    </build>
+
 </project>
