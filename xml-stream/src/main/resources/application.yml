@@ -1,1 +1,11 @@
-
+server:
+  port: 9001
+  servlet:
+    context-path: /simple
+  undertow:
+    accesslog:
+      enabled: true
+      dir: log
+spring:
+  main:
+    banner-mode: off
