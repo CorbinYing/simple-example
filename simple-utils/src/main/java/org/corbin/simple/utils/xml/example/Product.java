@@ -4,6 +4,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.xml.bind.annotation.*;
+import java.util.List;
 
 @Getter
 @Setter
@@ -17,6 +18,10 @@ public class Product {
 
     @XmlElement(name = "productName")
     private String name;
+    //使用xml list 将列表中的所有字段显示在同一个标签中，空格隔开
+    //不使用则分多个相同标签分别显示
+    @XmlList
+    private List<String> tags;
 
 
 }

@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.nio.charset.StandardCharsets;
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -30,6 +31,7 @@ public class xmlFileController {
         Product p2 = new Product();
         p2.setId("p2");
         p2.setName("p2产品");
+        p2.setTags(Arrays.asList("进口", "优选"));
 
         List<Product> products = Lists.newArrayList(p1, p2);
 
@@ -60,13 +62,14 @@ public class xmlFileController {
                 "        </singleProduct>\n" +
                 "        <singleProduct productId=\"p2\">\n" +
                 "            <productName>p2产品</productName>\n" +
+                "            <tags>进口 优选</tags>\n" +
                 "        </singleProduct>\n" +
                 "    </products>\n" +
                 "    <extraAttr>\n" +
                 "        <businessName>大灰狼有限公司</businessName>\n" +
                 "        <customerName>喜羊羊</customerName>\n" +
                 "    </extraAttr>\n" +
-                "</order>\n";
+                "</order>";
 
         Order order = XmlUtil.xmlToBean(xmldata, Order.class);
         System.out.println(order.toString());

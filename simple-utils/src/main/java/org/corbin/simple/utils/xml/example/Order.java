@@ -51,6 +51,7 @@ public class Order {
     //也可以使用@XmlAnyAttrbute注解  List<Object> List<? extends Product> 动态放入具体商品等
     private List<Product> productList;
 
+    //@XmlElementRef注解 可以利用继承关系，显示ExtraAttr的子类的属性字段
     private ExtraAttr extraAttr;
 
     /**
